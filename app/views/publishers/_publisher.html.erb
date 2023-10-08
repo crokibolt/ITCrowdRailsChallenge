@@ -1,8 +1,17 @@
-<div id="<%= dom_id publisher %>">
-    <p>
-        Name: <%= publisher.name %>
-    </p>
-    <p>
-        Books published: <%= publisher.books.count %>
-    </p>
+<div id="<%= dom_id publisher %>" class="item-display">
+    <div>
+        <p class="text-xl">
+            <%= publisher.name %>
+        </p>
+        <p>
+            <strong>Books published:</strong> <%= publisher.books.count %>
+        </p>
+
+    </div>
+    <div class="my-auto">
+        <%= link_to "Detail", publisher, class:"btn bg-blue-400" %>
+        <%= link_to "Edit", edit_publisher_path(publisher), class:"btn bg-green-400" %>
+        <%= link_to "Destroy", publisher, class:"btn bg-red-400", data: 
+            { turbo_method: :delete } %>
+    </div>
 </div>

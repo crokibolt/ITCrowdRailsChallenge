@@ -1,14 +1,17 @@
-<p style="color: green"><%= notice %></p>
+<div class="flex flex-col w-screen h-[80vh]">
+  <div class="flex p-5 justify-between">
+      <h1 class="text-3xl">Authors</h1>
+      <div>
+        <%= link_to "New author", new_author_path, class:"btn bg-green-500" %>
+        <%= link_to "Go back to home", backroom_path, class:"btn bg-gray-400" %>
+      </div>
+  </div>
+  <div class="separator"></div>
+  <div id="authors" class="items-container">
+    <% @authors.each do |author| %>
+      <%= render author %>
+      <div class="separator"></div>
+    <% end %>
+  </div>
 
-<h1>Authors</h1>
-
-<div id="authors">
-  <% @authors.each do |author| %>
-    <%= render author %>
-    <p>
-      <%= link_to "Show this author", author %>
-    </p>
-  <% end %>
 </div>
-
-<%= link_to "New author", new_author_path %>

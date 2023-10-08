@@ -1,7 +1,43 @@
-<p>Hi admin !</p>
-<%= link_to "List of books", "/backroom/books/" %> <br>
-<%= link_to "Create new book", "/backroom/books/new" %> <br>
-<%= link_to "List of authors", "/backroom/authors/" %> <br>
-<%= link_to "Create new author", "/backroom/authors/new" %> <br>
-<%= link_to "List of publishers", "/backroom/publishers/" %> <br>
-<%= link_to "Create new publisher", "/backroom/publishers/new" %> <br>
+<div class="w-screen h-[calc(100vh-80px)]">
+
+    <p class="text-4xl text-center py-3">Welcome to the backroom</p>
+    <p class="text-2xl text-center py-2">Entities</p>
+    <div class="separator"></div>
+    <div class="w-[50vw] mx-auto">
+      <div class="flex justify-evenly py-4">
+        <div>
+          <h1 class="text-xl">Books</h1>
+        </div>
+
+        <div class="flex w-[50%] justify-evenly grow-0">
+          <%= link_to "List of books", "/backroom/books/", class: "btn bg-blue-400" %> <br>
+          <%= link_to "Create new book", "/backroom/books/new", class: "btn bg-green-400" %> <br>
+        </div>
+
+      </div>
+
+      <div class="separator"></div>
+      
+      <div class="flex justify-evenly py-4">
+        <div>
+          <h1 class="text-xl">Authors</h1>
+        </div>
+        <div class="flex w-[50%] justify-evenly grow-0">
+          <%= link_to "List of authors", "/backroom/authors/", class: "btn bg-blue-400" %> <br>
+          <%= link_to "Create new author", "/backroom/authors/new", class: "btn bg-green-400" %> <br>
+        </div>
+      </div>
+
+      <div class="separator"></div>
+
+      <div class="flex justify-evenly py-4">
+        <div>
+          <h1 class="text-xl">Publishers</h1>
+        </div>
+        <div class="flex w-[50%] justify-evenly grow-0">
+            <%= link_to "List of publishers", "/backroom/publishers/", class: "btn bg-blue-400 block" %> <br>
+            <%= link_to "Create new publisher", "/backroom/publishers/new", class: "btn bg-green-400 block" %> <br>
+        </div>
+      </div>
+    </div>
+</div>

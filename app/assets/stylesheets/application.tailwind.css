@@ -30,7 +30,35 @@
   }
 
   .form-container {
-    @apply w-[900px] h-full mt-8 mx-auto flex text-center flex-col rounded-lg 
-            shadow-2xl py-5 px-8
+    @apply w-[900px] min-h-[75vh] mt-8 mx-auto flex justify-between text-center 
+            flex-col rounded-lg shadow-2xl py-5 px-8
+  }
+
+  .separator {
+    @apply border-t-2 border-t-black
+  }
+
+  .items-container {
+    @apply bg-white w-[50%] mx-auto rounded-lg border-x-2 border-x-black
+  }
+
+  .item-display {
+    @apply p-4 flex justify-between rounded-lg
+  }
+
+  .item-detail {
+    @apply p-4 flex flex-col justify-between items-center mx-auto w-[50%] min-h-[75vh]
+  }
+
+  .detail-container {
+    @apply flex flex-col gap-3 text-center
+  }
+
+  .item-detail h3 {
+    @apply text-3xl
+  }
+
+  .item-detail p {
+    @apply text-xl
   }
 }

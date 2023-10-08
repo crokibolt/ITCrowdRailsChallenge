@@ -20,6 +20,8 @@ class BooksController < ApplicationController
 
   # GET /books/1/edit
   def edit
+    @authors = Author.select("id, first_name, last_name")
+    @publishers = Publisher.select("id, name")
   end
 
   # POST /books or /books.json

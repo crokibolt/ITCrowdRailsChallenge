@@ -10,11 +10,11 @@
       </ul>
     </div>
   <% end %>
-  <div>
+  <div class="control-section">
     <%= form.label :name %> <br>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "text-input" %>
   </div>
   <div>
-    <%= form.submit %>
+    <%= form.submit class:"btn bg-green-500" %>
   </div>
 <% end %>

@@ -19,12 +19,14 @@
   <div class="control-section">
     <%= form.label :author_id, "Author" %> <br>
     <%= form.collection_select :author_id, @authors, :id, :full_name,
+         {},
          {:class => "text-input"}%>
   </div>
 
   <div class="control-section">
     <%= form.label :publisher_id, "Publisher" %> <br>
     <%= form.collection_select :publisher_id, @publishers, :id, :name,
+         {},
          {:class => "text-input"} %>
   </div>
 
