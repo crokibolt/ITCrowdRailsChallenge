@@ -1,0 +1,12 @@
+<div class="form-container bg-red-300">
+
+  <h1 class="text-3xl">New book</h1>
+
+  <%= render "form", book: @book %>
+
+  <br>
+
+  <div>
+    <%= link_to "Back to books", books_path, class: "btn bg-blue-500" %>
+  </div>
+</div>

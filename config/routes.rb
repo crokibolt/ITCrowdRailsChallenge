@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :admins
+  root "welcome#index"
+  get 'backroom', to: 'welcome#backroom'
+  scope '/backroom' do
+    resources :books, :authors, :publishers
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

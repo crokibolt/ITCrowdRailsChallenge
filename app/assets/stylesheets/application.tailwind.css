@@ -1,0 +1,36 @@
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+@layer components {
+  .btn {
+    @apply cursor-pointer p-2 rounded-md
+  }
+
+  .text-input {
+    @apply w-full rounded-md text-lg p-4
+  }
+
+  .area-input {
+    @apply w-full text-base rounded-md p-3
+  }
+
+  .date-input {
+    @apply w-full rounded-md
+  }
+
+  .control-section {
+    @apply flex flex-col my-3
+  }
+
+  .control-section label {
+    @apply text-xl
+  }
+
+  .form-container {
+    @apply w-[900px] h-full mt-8 mx-auto flex text-center flex-col rounded-lg 
+            shadow-2xl py-5 px-8
+  }
+}

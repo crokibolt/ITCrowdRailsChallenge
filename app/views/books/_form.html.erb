@@ -1,0 +1,54 @@
+<%= form_with(model: book) do |form| %>
+  <% if book.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+        <% book.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-section">
+    <%= form.label :title %> <br>
+    <%= form.text_field :title, class: "text-input" %>
+  </div>
+
+  <div class="control-section">
+    <%= form.label :author_id, "Author" %> <br>
+    <%= form.collection_select :author_id, @authors, :id, :full_name,
+         {:class => "text-input"}%>
+  </div>
+
+  <div class="control-section">
+    <%= form.label :publisher_id, "Publisher" %> <br>
+    <%= form.collection_select :publisher_id, @publishers, :id, :name,
+         {:class => "text-input"} %>
+  </div>
+
+  <div class="control-section">
+    <%= form.label :isbn, "ISBN" %> <br>
+    <%= form.text_field :isbn, class: "text-input" %>
+  </div>
+
+  <div class="control-section">
+    <%= form.label :date_of_publication %> <br>
+    <%= form.date_field :date_of_publication, max: Date.today, class: "date-input" %>
+  </div>
+
+  <div class="control-section">
+    <%= form.label :review %> <br>
+    <%= form.text_area :review, class: "area-input" %>
+  </div>
+
+  <div class="control-section">
+    <%= form.label :price %> <br>
+    <%= form.number_field :price, min: 0, step: 0.01, class: "text-input" %>
+  </div>
+
+  <div>
+    <%= form.submit class: "btn bg-green-500" %>
+  </div>
+<% end %>

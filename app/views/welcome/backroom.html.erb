@@ -1,0 +1,18 @@
+
+<% if current_admin %>
+  <%= render "/backroom/signed" %>
+
+<% else %>
+<div class="w-full h-[100vh] py-[45vh] text-center">
+
+  <p class="text-[5rem]">You need to sign in</p>
+  <div class="my-6">
+  <%= link_to "Sign up!", new_admin_registration_path, class: "rounded-md p-2 
+    bg-green-400 text-2xl" %>
+  </div>
+    <div>
+      <%= link_to "Login", new_admin_session_path, class: "rounded-md p-2 
+        bg-blue-400 text-2xl" %>
+    </div>
+</div>
+<% end %>

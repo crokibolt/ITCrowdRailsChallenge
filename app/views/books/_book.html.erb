@@ -1,0 +1,8 @@
+<div id="<%= dom_id book %>">
+    <h3><strong>Title: </strong> <%= book.title %></h3>
+    <p><strong>ISBN: </strong> <%= book.isbn %></p>
+    <p><strong>Publisher: </strong> <%= book.publisher.name %></p>
+    <p><strong>Author: </strong> <%= book.author.full_name %> (<%= book.author.age %>)</p>
+    <p><strong>Price: </strong> $<%= book.price %></p>
+    
+</div>
