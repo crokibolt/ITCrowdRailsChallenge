@@ -7,10 +7,20 @@
     </div>
   </div>
   <div class="separator"></div>
-  <div id="books" class="items-container">
-    <% @books.each do |book| %>
-      <%= render book %>
-      <div class="separator"></div>
+  <div class="flex">
+    <div class="filter-form-container">
+      <h1 class="text-2xl">Filter by</h1>
+      <%= render "filter_form" %>
+    </div>
+    <% if @books.empty? %>
+      <h1 class="text-3xl text-center text-red-500">No book matches the filters</h1>
+    <% else %>
+      <div id="books" class="items-container">
+        <% @books.each do |book| %>
+          <%= render book %>
+          <div class="separator"></div>
+        <% end %>
+      </div>
     <% end %>
   </div>
 

@@ -1,0 +1,9 @@
+<%= form_with(url: publishers_path, method: :get) do |form| %>
+  <div class="control-section">
+    <%= form.label :book, "Book" %> <br>
+    <%= form.collection_select :book, @books, :id, :title, 
+        {include_blank: true}, {class: "text-input"} %>
+  </div>
+  <%= form.submit "Filter", class:"btn bg-orange-300"%>
+  <%= link_to "Clear filters", publishers_path, class: "btn bg-gray-300"  %>
+<% end %>

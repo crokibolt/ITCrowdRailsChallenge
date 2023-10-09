@@ -4,7 +4,8 @@ class PublishersController < ApplicationController
 
   # GET /publishers or /publishers.json
   def index
-    @publishers = Publisher.all
+    @books = Book.select("id, title")
+    @publishers = filter
   end
 
   # GET /publishers/1 or /publishers/1.json
@@ -67,5 +68,15 @@ class PublishersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def publisher_params
       params.require(:publisher).permit(:name)
+    end
+
+    def filter
+      if params[:book].presence
+        publishers = Publisher.includes(:books).where(books: {id: params[:book]})
+      else
+        publishers = Publisher.includes(:books).all
+      end
+
+      publishers
     end
 end

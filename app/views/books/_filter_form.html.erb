@@ -1,0 +1,14 @@
+<%= form_with(url: books_path, method: :get) do |form| %>
+  <div class="control-section">
+    <%= form.label :author, "Author" %> <br>
+    <%= form.collection_select :author, @authors, :id, :full_name, 
+        {include_blank: true}, {class: "text-input"} %>
+  </div>
+  <div class="control-section">
+    <%= form.label :publisher, "Publisher" %> <br>
+    <%= form.collection_select :publisher, @publishers, :id, :name,
+        {include_blank: true}, {class: "text-input"} %>
+  </div>
+  <%= form.submit "Filter", class:"btn bg-orange-300"%>
+  <%= link_to "Clear filters", books_path, class: "btn bg-gray-300"  %>
+<% end %>

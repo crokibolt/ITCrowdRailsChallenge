@@ -10,8 +10,8 @@
         </div>
 
         <div class="flex w-[50%] justify-evenly grow-0">
-          <%= link_to "List of books", "/backroom/books/", class: "btn bg-blue-400" %> <br>
-          <%= link_to "Create new book", "/backroom/books/new", class: "btn bg-green-400" %> <br>
+          <%= link_to "List of books", books_path, class: "btn bg-blue-400" %> <br>
+          <%= link_to "Create new book", new_book_path, class: "btn bg-green-400" %> <br>
         </div>
 
       </div>
@@ -23,8 +23,8 @@
           <h1 class="text-xl">Authors</h1>
         </div>
         <div class="flex w-[50%] justify-evenly grow-0">
-          <%= link_to "List of authors", "/backroom/authors/", class: "btn bg-blue-400" %> <br>
-          <%= link_to "Create new author", "/backroom/authors/new", class: "btn bg-green-400" %> <br>
+          <%= link_to "List of authors", authors_path, class: "btn bg-blue-400" %> <br>
+          <%= link_to "Create new author", new_author_path, class: "btn bg-green-400" %> <br>
         </div>
       </div>
 
@@ -35,8 +35,8 @@
           <h1 class="text-xl">Publishers</h1>
         </div>
         <div class="flex w-[50%] justify-evenly grow-0">
-            <%= link_to "List of publishers", "/backroom/publishers/", class: "btn bg-blue-400 block" %> <br>
-            <%= link_to "Create new publisher", "/backroom/publishers/new", class: "btn bg-green-400 block" %> <br>
+            <%= link_to "List of publishers", publishers_path, class: "btn bg-blue-400 block" %> <br>
+            <%= link_to "Create new publisher", new_publisher_path, class: "btn bg-green-400 block" %> <br>
         </div>
       </div>
     </div>

@@ -39,7 +39,8 @@
   }
 
   .items-container {
-    @apply bg-white w-[50%] mx-auto rounded-lg border-x-2 border-x-black
+    @apply bg-white w-[50%] self-start mr-auto rounded-lg border-x-2 
+      border-x-black
   }
 
   .item-display {
@@ -60,5 +61,9 @@
 
   .item-detail p {
     @apply text-xl
+  }
+  
+  .filter-form-container {
+    @apply text-center w-[300px] px-5
   }
 }

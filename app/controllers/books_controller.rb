@@ -1,10 +1,12 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[ show edit update destroy ]
+  before_action :set_authors, only: %i[ index edit new]
+  before_action :set_publishers, only: %i[ index edit new ]
   before_action :authenticate_admin!, except: [:index, :show]
 
   # GET /books or /books.json
   def index
-    @books = Book.all
+    @books = filter
   end
 
   # GET /books/1 or /books/1.json
@@ -13,15 +15,11 @@ class BooksController < ApplicationController
 
   # GET /books/new
   def new
-    @authors = Author.select("id, first_name, last_name")
-    @publishers = Publisher.select("id, name")
     @book = Book.new
   end
 
   # GET /books/1/edit
   def edit
-    @authors = Author.select("id, first_name, last_name")
-    @publishers = Publisher.select("id, name")
   end
 
   # POST /books or /books.json
@@ -68,9 +66,31 @@ class BooksController < ApplicationController
       @book = Book.includes(:author, :publisher).find(params[:id])
     end
 
+    def set_authors
+      @authors = Author.select("id, first_name, last_name")
+    end
+
+    def set_publishers
+      @publishers = Publisher.select("id, name")
+    end
+
     # Only allow a list of trusted parameters through.
     def book_params
       params.require(:book).permit(:title, :isbn, :date_of_publication,
       :review, :price, :author_id, :publisher_id)
+    end
+
+    def filter
+      if params[:author].presence && params[:publisher].presence
+        books = Book.includes(:author, :publisher).where(:author_id => params[:author], :publisher_id => params[:publisher])
+      elsif params[:author].presence
+        books = Book.includes(:author, :publisher).where(:author_id => params[:author])
+      elsif params[:publisher].presence
+        books = Book.includes(:author, :publisher).where(:publisher_id => params[:publisher])
+      else
+        books = Book.includes(:author, :publisher).all
+      end
+
+      books
     end
 end

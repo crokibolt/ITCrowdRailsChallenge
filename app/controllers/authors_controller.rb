@@ -4,7 +4,8 @@ class AuthorsController < ApplicationController
 
   # GET /authors or /authors.json
   def index
-    @authors = Author.all
+    @books = Book.select("id, title")
+    @authors = filter
   end
 
   # GET /authors/1 or /authors/1.json
@@ -68,5 +69,15 @@ class AuthorsController < ApplicationController
     def author_params
       params.require(:author).permit(:first_name, :last_name, :date_of_birth, 
         :about, :nationality)
+    end
+
+    def filter
+      if params[:book].presence
+        authors = Author.includes(:books).where(books: {id: params[:book]})
+      else
+        authors = Author.includes(:books).all
+      end
+
+      authors
     end
 end
