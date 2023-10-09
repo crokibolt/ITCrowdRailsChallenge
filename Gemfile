@@ -70,3 +70,7 @@ end
 gem "devise", "~> 4.9"
 
 gem "tailwindcss-rails", "~> 2.0"
+
+gem "kaminari"
+
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'

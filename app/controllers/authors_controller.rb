@@ -73,9 +73,9 @@ class AuthorsController < ApplicationController
 
     def filter
       if params[:book].presence
-        authors = Author.includes(:books).where(books: {id: params[:book]})
+        authors = Author.includes(:books).where(books: {id: params[:book]}).page(params[:page]).per(5)
       else
-        authors = Author.includes(:books).all
+        authors = Author.includes(:books).page(params[:page]).per(5)
       end
 
       authors

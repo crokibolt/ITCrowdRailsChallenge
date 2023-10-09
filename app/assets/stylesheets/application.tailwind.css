@@ -66,4 +66,8 @@
   .filter-form-container {
     @apply text-center w-[300px] px-5
   }
+
+  .current {
+    @apply border-b-2 border-b-white
+  }
 }

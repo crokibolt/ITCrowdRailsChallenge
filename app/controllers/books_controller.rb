@@ -82,13 +82,17 @@ class BooksController < ApplicationController
 
     def filter
       if params[:author].presence && params[:publisher].presence
-        books = Book.includes(:author, :publisher).where(:author_id => params[:author], :publisher_id => params[:publisher])
+        books = Book.includes(:author, :publisher)
+        .where(:author_id => params[:author], 
+                :publisher_id => params[:publisher]).page(params[:page]).per(4)
       elsif params[:author].presence
-        books = Book.includes(:author, :publisher).where(:author_id => params[:author])
+        books = Book.includes(:author, :publisher)
+        .where(:author_id => params[:author]).page(params[:page]).per(4)
       elsif params[:publisher].presence
-        books = Book.includes(:author, :publisher).where(:publisher_id => params[:publisher])
+        books = Book.includes(:author, :publisher)
+        .where(:publisher_id => params[:publisher]).page(params[:page]).per(4)
       else
-        books = Book.includes(:author, :publisher).all
+        books = Book.includes(:author, :publisher).page(params[:page]).per(4)
       end
 
       books

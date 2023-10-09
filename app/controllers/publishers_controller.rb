@@ -72,9 +72,9 @@ class PublishersController < ApplicationController
 
     def filter
       if params[:book].presence
-        publishers = Publisher.includes(:books).where(books: {id: params[:book]})
+        publishers = Publisher.includes(:books).where(books: {id: params[:book]}).page(params[:page]).per(5)
       else
-        publishers = Publisher.includes(:books).all
+        publishers = Publisher.includes(:books).page(params[:page]).per(5)
       end
 
       publishers
