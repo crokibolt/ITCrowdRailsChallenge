@@ -95,31 +95,33 @@ module Api
     end
 
     def filter
-      if params[:author].presence && params[:publisher].presence
+      books = Book.includes(:author, :publisher).all
+      
+      if params[:author].presence
 
-      books = Book.includes(:author, :publisher)
-        .where(author: {first_name: params[:author].split[0],
-                        last_name: params[:author].split[1]}, 
-                        publisher: {name: params[:publisher]})
-                        .page(params[:page]).per(4)
-
-      elsif params[:author].presence
-
-        books = Book.includes(:author, :publisher)
-        .where(author: {first_name: params[:author].split[0],
+        books = books.where(author: {first_name: params[:author].split[0],
                         last_name: params[:author].split[1]})
-                        .page(params[:page]).per(4)
                         
-      elsif params[:publisher].presence
-
-        books = Book.includes(:author, :publisher)
-        .where(publisher: {name: params[:publisher]}).page(params[:page]).per(4)
-
-      else
-        books = Book.includes(:author, :publisher).page(params[:page]).per(4)
       end
 
-      books
+      if params[:publisher].presence
+
+        books = books.where(publisher: {name: params[:publisher]})
+
+      end
+
+      if params[:min].presence
+
+        books = books.where("price >= ? ", params[:min].to_f)
+      
+      end
+    
+      if params[:max].presence
+        books = books.where("price <= ?", params[:max].to_f)
+
+      end
+
+      books.page(params[:page]).per(4)
     end
   end
 
