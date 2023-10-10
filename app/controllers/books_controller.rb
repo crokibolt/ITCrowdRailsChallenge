@@ -69,6 +69,18 @@ class BooksController < ApplicationController
     redirect_to books_url
   end
 
+  def search
+    fields = params[:search].split(', ')
+    if fields.length == 4
+      @book = Book.includes(:author, :publisher).where(title: fields[0],
+        isbn: fields[1],
+        author: {first_name: fields[2].split[0], last_name: fields[2].split[1]},
+        publisher: {name: fields[3]})[0]
+      
+      redirect_to frontend_book_path(@book)
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book

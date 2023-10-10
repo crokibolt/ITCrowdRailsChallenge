@@ -12,8 +12,10 @@
   </head>
 
   <body class="bg-slate-200">
-    <% if current_admin %>
+    <% if current_uri.presence && (current_uri[1].strip == "backroom") %>
       <%= render "/components/backroom_header" %>
+    <% elsif !current_uri.presence || current_uri[1].strip != "admins"%>
+      <%= render "/components/frontend_header" %>
     <%end%>
     <%= yield %>
     <% if notice.presence %>

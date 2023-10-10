@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
   devise_for :admins
   root "welcome#index"
-  get 'backroom', to: 'welcome#backroom'
-  scope '/backroom' do
+  get "backroom", to: "welcome#backroom"
+  scope "/backroom" do
     get "/books/prices_edit" => "books#prices_edit", as: :prices_edit
     post "/books" => "books#prices_update"
     resources :books, :authors, :publishers
   end
+
+  resources :books, only: [:index, :show], as: :frontend_books
+  post "/search" => "books#search"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
