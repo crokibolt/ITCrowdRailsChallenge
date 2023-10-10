@@ -74,3 +74,5 @@ gem "tailwindcss-rails", "~> 2.0"
 gem "kaminari"
 
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
+
+gem "good_job", "~> 3.19"

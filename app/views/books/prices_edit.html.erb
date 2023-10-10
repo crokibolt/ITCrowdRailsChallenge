@@ -1,0 +1,29 @@
+<div class="form-container bg-orange-300 justify-evenly">
+  <h1 class="text-4xl">Edit books prices by publisher</h1>
+
+  <%= form_with(url: books_path) do |form| %>
+    <div class="control-section">
+      <%= form.label :publisher %> <br>
+      <%= form.collection_select :publisher, @publishers, :id, :name, {}, 
+          { class: "text-input" } %>
+    </div>
+    <div class="control-section">
+      <%= form.label :percentage %> <br>
+      <%= form.number_field :percentage, min: 0, max: 100, step: 1,
+           class: "text-input" %>
+    </div>
+    <div class="control-section">
+      <%= form.label :option, "Do you want to increase or decrease the price?"  %>
+      <div>
+        <%= form.radio_button :option, "increase"%>
+        <%= form.label :option_increase, "Increase" %>
+        <%= form.radio_button :option, "decrease"%>
+        <%= form.label :option_decrease, "Decrease" %>
+
+      </div>
+    </div>
+    <div>
+      <%= form.submit "Edit prices", class: "btn bg-green-400" %>
+    </div>
+  <% end %>
+</div>

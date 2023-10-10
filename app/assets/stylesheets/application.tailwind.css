@@ -70,4 +70,14 @@
   .current {
     @apply border-b-2 border-b-white
   }
+
+  .notice {
+    @apply absolute bottom-7 right-2 w-[300px] h-[100px] rounded-lg 
+    bg-green-300 text-black text-center text-xl
+  }
+
+  .alert {
+    @apply absolute bottom-7 right-2 w-[300px] h-[100px] rounded-lg 
+    bg-red-500 text-black text-center text-xl
+  }
 }

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root "welcome#index"
   get 'backroom', to: 'welcome#backroom'
   scope '/backroom' do
+    get "/books/prices_edit" => "books#prices_edit", as: :prices_edit
+    post "/books" => "books#prices_update"
     resources :books, :authors, :publishers
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

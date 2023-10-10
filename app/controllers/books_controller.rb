@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: %i[ show edit update destroy ]
-  before_action :set_authors, only: %i[ index edit new]
-  before_action :set_publishers, only: %i[ index edit new ]
+  before_action :set_book, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_authors, only: [ :index, :edit, :new]
+  before_action :set_publishers, only: [ :index, :edit, :new, :prices_edit ]
   before_action :authenticate_admin!, except: [:index, :show]
 
   # GET /books or /books.json
@@ -58,6 +58,15 @@ class BooksController < ApplicationController
       format.html { redirect_to books_url, notice: "Book was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def prices_edit
+  end
+
+  def prices_update
+    PriceModifyJob.set(wait: 5.seconds).perform_later(params[:publisher], params[:option], 
+      params[:percentage])
+    redirect_to books_url
   end
 
   private
