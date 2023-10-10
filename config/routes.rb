@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :books, only: [:index, :show], as: :frontend_books
   post "/search" => "books#search"
 
+  namespace :api, defaults: { format: :json }  do
+    resources :books
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
