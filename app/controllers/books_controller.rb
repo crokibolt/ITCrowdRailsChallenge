@@ -106,14 +106,13 @@ class BooksController < ApplicationController
       
       if params[:author].presence
 
-        books = books.where(author: {first_name: params[:author].split[0],
-                        last_name: params[:author].split[1]})
+        books = books.where(author: {id: params[:author]})
                         
       end
 
       if params[:publisher].presence
 
-        books = books.where(publisher: {name: params[:publisher]})
+        books = books.where(publisher: {id: params[:publisher]})
 
       end
 
