@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   before_action :set_book, only: [ :show, :edit, :update, :destroy ]
   before_action :set_authors, only: [ :index, :edit, :new]
   before_action :set_publishers, only: [ :index, :edit, :new, :prices_edit ]
-  before_action :authenticate_admin!, except: [:index, :show]
+  before_action :authenticate_admin!, except: [:index, :show, :search]
 
   # GET /books or /books.json
   def index
