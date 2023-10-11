@@ -77,7 +77,11 @@ class BooksController < ApplicationController
         author: {first_name: fields[2].split[0], last_name: fields[2].split[1]},
         publisher: {name: fields[3]})[0]
       
-      redirect_to frontend_book_path(@book)
+      if !@book.presence
+        redirect_to root_path, alert: "Book not found"
+      else
+        redirect_to frontend_book_path(@book)
+      end
     end
   end
 
